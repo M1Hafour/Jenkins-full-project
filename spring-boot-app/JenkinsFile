@@ -5,8 +5,8 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/M1Hafour/Jenkins-full-project.git'
+        //sh 'echo passed'
+        git branch: 'main', url: 'https://github.com/M1Hafour/Jenkins-full-project.git'
       }
     }
     stage('Build and Test') {
@@ -32,7 +32,7 @@ pipeline {
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
-      steps {
+     /* steps {
         script {
             sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
             def dockerImage = docker.image("${DOCKER_IMAGE}")
@@ -41,8 +41,8 @@ pipeline {
             }
         }
       }
-    }
-    stage('Update Deployment File') {
+    }*/
+    /*stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "Jenkins-full-project"
             GIT_USER_NAME = "M1Hafour"
@@ -60,6 +60,6 @@ pipeline {
                 '''
             }
         }
-    }
+    }*/
   }
 }
